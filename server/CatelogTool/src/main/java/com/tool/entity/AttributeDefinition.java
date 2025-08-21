@@ -45,8 +45,4 @@ public class AttributeDefinition {
     @Column(name="created_at")
     private OffsetDateTime createdAt = OffsetDateTime.now();
 
-    @Column(name="updated_at")
-    private OffsetDateTime updatedAt = OffsetDateTime.now();
-
 }
-

@@ -1,12 +1,24 @@
 package com.tool.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "product_attribute_value",
@@ -30,28 +42,7 @@ public class ProductAttributeValue {
     @Column(name="value_string", length=1000)
     private String valueString;
 
-    @Column(name="value_integer")
-    private Long valueInteger;
-
-    @Column(name="value_decimal", precision=18, scale=6)
-    private BigDecimal valueDecimal;
-
-    @Column(name="value_boolean")
-    private Boolean valueBoolean;
-
-    @Column(name="value_date")
-    private LocalDate valueDate;
-
-    @Column(name="value_json", columnDefinition = "jsonb")
-    private String valueJson;
-
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="value_option_id")
-    private AttributeOption valueOption;
-
     @Column(name="created_at")
     private OffsetDateTime createdAt = OffsetDateTime.now();
 
-    @Column(name="updated_at")
-    private OffsetDateTime updatedAt = OffsetDateTime.now();
 }

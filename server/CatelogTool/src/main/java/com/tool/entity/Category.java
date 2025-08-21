@@ -39,9 +39,4 @@ public class Category {
     @Column(name="created_at")
     private OffsetDateTime createdAt = OffsetDateTime.now();
 
-    @Column(name="updated_at")
-    private OffsetDateTime updatedAt = OffsetDateTime.now();
-
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AttributeDefinition> attributes = new ArrayList<>();
 }
