@@ -16,6 +16,12 @@ function CategoryList() {
 //   }, []);
 
 useEffect(() => {
+    axios.get("http://localhost:8080/api/categories")
+      .then((res) => setCategories(res.data))
+      .catch((err) => console.error("Error fetching categories:", err));
+  }, []);
+
+useEffect(() => {
   fetch("http://localhost:8080/api/categories")
     .then((res) => res.json())
     .then((data) => {

@@ -30,15 +30,6 @@ public class AttributeDefinition {
     @Enumerated(EnumType.STRING)
     private DataType dataType;
 
-    @Column(name="is_required")
-    private Boolean isRequired = false;
-
-    @Column(name="is_searchable")
-    private Boolean isSearchable = false;
-
-    @Column(name="is_filterable")
-    private Boolean isFilterable = false;
-
   //@Column(name="validation", columnDefinition = "jsonb")
   //private String validation; // store as raw JSON string
 

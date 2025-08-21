@@ -42,7 +42,7 @@ public class CategoryService {
         ad.setName(req.getName());
         ad.setCode(req.getCode());
         ad.setDataType(req.getDataType());
-        ad.setIsRequired(req.getIsRequired());
+        //ad.setIsRequired(req.getIsRequired());
         //ad.setValidation(req.getValidation());
         return attrDefRepo.save(ad);
     }

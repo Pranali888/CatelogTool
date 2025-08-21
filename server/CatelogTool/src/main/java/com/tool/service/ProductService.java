@@ -48,18 +48,18 @@ public class ProductService {
 
     @Transactional
     public Product createProduct(CreateProductRequest req) {
-        if (productRepo.existsBySku(req.getSku())) throw new IllegalArgumentException("SKU exists");
+        if (productRepo.existsBySku(req.getSlug())) throw new IllegalArgumentException("SKU exists");
 
         var category = categoryRepo.findById(req.getCategoryId()).orElseThrow(() -> new IllegalArgumentException("Category not found"));
 
         Product product = new Product();
-        product.setSku(req.getSku());
-        product.setName(req.getName());
-        product.setSlug(req.getSlug());
-        product.setBrand(req.getBrand());
+        product.setSku(req.getSlug());
+        //product.setName(req.getName());
+        //product.setSlug(req.getSlug());
+        //product.setBrand(req.getBrand());
         product.setCategory(category);
         product.setPrice(req.getPrice() == null ? BigDecimal.ZERO : req.getPrice());
-        product.setStockQuantity(req.getStockQuantity() == null ? 0 : req.getStockQuantity());
+        //product.setStockQuantity(req.getStockQuantity() == null ? 0 : req.getStockQuantity());
 
         product = productRepo.save(product);
 
@@ -77,13 +77,8 @@ public class ProductService {
 
                 switch (opt.getDataType()) {
                     case STRING -> pav.setValueString(rawValue);
-                    case INTEGER -> pav.setValueInteger(Long.valueOf(rawValue));
-                    case DECIMAL -> pav.setValueDecimal(new BigDecimal(rawValue));
-                    case BOOLEAN -> pav.setValueBoolean(Boolean.valueOf(rawValue));
-                    case DATE -> pav.setValueDate(LocalDate.parse(rawValue)); // expect YYYY-MM-DD
-                    case JSON -> pav.setValueJson(rawValue);
                     case ENUM -> {
-                        // for enums ideally validate against AttributeOption; here we save as string
+                    
                         pav.setValueString(rawValue);
                     }
                 }
