@@ -27,11 +27,11 @@ public class Product {
     @JsonIgnore
     private Category category;
 
-//    @Column(nullable=false)
-//    private String name;
+   @Column(nullable=false)
+    private String name;
 
-    @Column(nullable=false, unique=true)
-    private String slug;
+//    @Column(nullable=false, unique=true)
+//    private String slug;
 
 
     private BigDecimal price = BigDecimal.ZERO;

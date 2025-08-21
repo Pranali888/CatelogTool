@@ -20,4 +20,5 @@ public class CreateProductRequest {
 
     // attributes: map of attribute code -> stringified value
     private Map<String, String> attributes;
+    
 }
